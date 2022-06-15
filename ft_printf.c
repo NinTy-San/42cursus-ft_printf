@@ -14,49 +14,57 @@
 #include <string.h>
 
 
-void	format_case(char flag, va_list arg)
+int	format_case(char flag, va_list arg)
 {
+	int		len;
+
+	len = 0;
 	if (flag == 'c')
-		ft_putchar(va_arg(arg, int));
+		len += ft_putchar(va_arg(arg, int));
 	if (flag == 's')
-		ft_putstr(va_arg(arg, char *));
-	// if (flag == 'p')
+		len += ft_putstr(va_arg(arg, char *));
+	if (flag == 'p')
+		len += ft_hexa(va_arg(arg, char *));
 	// if (flag == 'd')
 	// if (flag == 'i')
 	// if (flag == 'u')
 	// if (flag == 'x')
 	// if (flag == 'X')
 	// if (flag == '%')
+	return (len);
 }
 
 int ft_printf(const char *str, ...)
 {
 	int		i;
-	// int		j;
-	// char	*format_str;
+	int		len;
+
     va_list args;
 
     va_start(args, str);
 	i = 0;
+	len = 0;
 	while (str[i])
 	{
 		if (str[i] == '%')
 		{
-			format_case(str[i + 1], args);
-			i += 2;
+			i++;
+			len += format_case(str[i], args);
 		}
 		write (1, &str[i], 1);
 		i++;
 	}
-	// ft_printf("%s",  );
-
     va_end(args);
-    return (1);
+    return (len);
 }
 
 
 int main()
 {
-	ft_printf("it was all %c dream\n%s \n", 'a', "and if you don't know now you know");
+	char	lettre = 'a';
+	char	str[] = "and if you don't know now you know";
+	ft_printf("it was all %c dream\n%s \n", lettre, str);
+	ft_printf("p= %p\n", str);
+	printf("p= %p\n", "😃 Coucou\ntu vas bien ?");
     return 0;
 }

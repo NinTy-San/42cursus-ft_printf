@@ -7,7 +7,8 @@
 #include <stdlib.h>
 
 int	ft_printf(const char *str, ...);
-void	ft_putchar(int c);
-void	ft_putstr(char *str);
+int	ft_putchar(int c);
+int	ft_putstr(char *str);
+int	ft_hexa(void *str);
 
 #endif
