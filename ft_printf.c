@@ -24,12 +24,17 @@ int	format_case(char flag, va_list arg)
 	if (flag == 's')
 		len += ft_putstr(va_arg(arg, char *));
 	if (flag == 'p')
-		len += ft_hexa(va_arg(arg, char *));
-	// if (flag == 'd')
-	// if (flag == 'i')
-	// if (flag == 'u')
-	// if (flag == 'x')
-	// if (flag == 'X')
+		len += ft_puthexa(va_arg(arg, char *));
+	if (flag == 'd')
+		len += ft_putnbr(va_arg(arg, int), "0123456789", 10);
+	if (flag == 'i')
+		len += ft_putnbr(va_arg(arg, int), "0123456789", 10);
+	if (flag == 'u')
+		len += ft_putunbr(va_arg(arg, unsigned int));
+	if (flag == 'x')
+		len += ft_putnbr(va_arg(arg, int), "0123456789abcdef", 16);
+	if (flag == 'X')
+		len += ft_putnbr(va_arg(arg, int), "0123456789ABCDEF", 16);
 	// if (flag == '%')
 	return (len);
 }
@@ -49,7 +54,7 @@ int ft_printf(const char *str, ...)
 		if (str[i] == '%')
 		{
 			i++;
-			len += format_case(str[i], args);
+			len += format_case(str[i++], args);
 		}
 		write (1, &str[i], 1);
 		i++;
@@ -61,10 +66,10 @@ int ft_printf(const char *str, ...)
 
 int main()
 {
-	char	lettre = 'a';
-	char	str[] = "and if you don't know now you know";
-	ft_printf("it was all %c dream\n%s \n", lettre, str);
-	ft_printf("p= %p\n", str);
-	printf("p= %p\n", "😃 Coucou\ntu vas bien ?");
+	// char	lettre = 'a';
+	// char	str[] = "and if you don't know now you know";
+	// ft_printf("it was all %c dream\n%s \n", lettre, str);
+	ft_printf("ft_printf = %X\n", 6445);
+	printf("printf = %X\n", 6445);
     return 0;
 }

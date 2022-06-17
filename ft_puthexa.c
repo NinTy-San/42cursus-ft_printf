@@ -12,24 +12,32 @@
 
 #include "ft_printf.h"
 
-int	ft_get_hexa(unsigned char c)
+int	ft_get_hexa(unsigned long adrs)
 {
 	char	*basehexa;
+	int		len;
 
 	basehexa = "0123456789abcdef";
-	write (1, "\\", 1);
-	write (1, &basehexa[c / 16], 1);
-	write (1, &basehexa[c % 16], 1);
-	return (3);
+	len = 0;
+	if (adrs > 15)
+		ft_get_hexa(adrs / 16);
+	len += ft_putchar (basehexa[adrs % 16]);
+	return (len);
 }
 
-int	ft_hexa(void *str)
+int	ft_puthexa(void *p)
 {
-	int		i;
+	unsigned long	adrs;
 	int len;
+
 	len = 0;
-	i = 0;
-	while (str[i])
-		len += ft_get_hexa(str[i]);
+	if (!p)
+		len += ft_putstr("(nil)");
+	else
+	{
+		adrs = (unsigned long) p;
+		len += ft_putstr("0x");
+		len += ft_get_hexa(adrs);
+	}
 	return (len);
 }

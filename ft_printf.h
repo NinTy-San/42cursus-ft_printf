@@ -9,6 +9,8 @@
 int	ft_printf(const char *str, ...);
 int	ft_putchar(int c);
 int	ft_putstr(char *str);
-int	ft_hexa(void *str);
+int	ft_puthexa(void *str);
+int	ft_putnbr(int nbr, char *base, int size);
+int ft_putunbr(unsigned int nbr);
 
 #endif
