@@ -12,18 +12,16 @@
 
 #include "ft_printf.h"
 
-int ft_putunbr(unsigned int nbr)
+int ft_putunbr(unsigned int nbr, int len)
 {
 	char	*base;
-	int		len;
 
 	base = "0123456789";
-	len = 0;
 	while (nbr >= 10)
 	{
-		ft_putunbr(nbr / 10);
+		ft_putunbr(nbr / 10, len);
 		nbr %= 10;
 	}
-	len += ft_putchar(base[nbr]);
+	len += ft_putchar(base[nbr], len);
 	return (len);
 }

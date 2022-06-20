@@ -8,11 +8,11 @@
 #include <string.h>
 
 int	ft_printf(const char *str, ...);
-int	ft_putchar(int c);
-int	ft_putstr(char *str);
-int	ft_putptr_hexa(void *str);
-int	ft_putnbr(int nbr);
-int ft_putunbr(unsigned int nbr);
-int	ft_putnbr_hexa(unsigned int nbr, char *base, int size);
+int	ft_putchar(int c, int len);
+int	ft_putstr(char *str, int len);
+int	ft_putptr_hexa(void *str, int len);
+int	ft_putnbr(int nbr, int len);
+int ft_putunbr(unsigned int nbr, int len);
+int	ft_putnbr_hexa(unsigned int nbr, char *base, int size, int len);
 
 #endif

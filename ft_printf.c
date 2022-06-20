@@ -12,30 +12,29 @@
 
 #include "ft_printf.h"
 
-int	format_case(char flag, va_list arg)
+int	format_case(char flag, va_list arg, int len)
 {
-	int		len;
-
-	len = 0;
+	int		l;
+	l = len;
 	if (flag == 'c')
-		len += ft_putchar(va_arg(arg, int));
+		l = ft_putchar(va_arg(arg, int), len);
 	if (flag == 's')
-		len += ft_putstr(va_arg(arg, char *));
+		l = ft_putstr(va_arg(arg, char *), len);
 	if (flag == 'p')
-		len += ft_putptr_hexa(va_arg(arg, char *));
+		l = ft_putptr_hexa(va_arg(arg, char *), len);
 	if (flag == 'd')
-		len += ft_putnbr(va_arg(arg, int));
+		l = ft_putnbr(va_arg(arg, int), len);
 	if (flag == 'i')
-		len += ft_putnbr(va_arg(arg, int));
+		l = ft_putnbr(va_arg(arg, int), len);
 	if (flag == 'u')
-		len += ft_putunbr(va_arg(arg, unsigned int));
+		l = ft_putunbr(va_arg(arg, unsigned int), len);
 	if (flag == 'x')
-		len += ft_putnbr_hexa(va_arg(arg, unsigned int), "0123456789abcdef", 16);
+		l = ft_putnbr_hexa(va_arg(arg, unsigned int), "0123456789abcdef", 16, len);
 	if (flag == 'X')
-		len += ft_putnbr_hexa(va_arg(arg, unsigned int), "0123456789ABCDEF", 16);
+		l = ft_putnbr_hexa(va_arg(arg, unsigned int), "0123456789ABCDEF", 16, len);
 	if (flag == '%')
-		len += ft_putchar(flag);
-	return (len);
+		l = ft_putchar(flag, len);
+	return (l);
 }
 
 int ft_printf(const char *str, ...)
@@ -53,10 +52,9 @@ int ft_printf(const char *str, ...)
 		if (str[i] == '%')
 		{
 			i++;
-			len += format_case(str[i++], args);
+			len = format_case(str[i++], args, len);
 		}
-		len += ft_putchar(str[i]);
-		// printf("\nlen = %i", len);
+		len += ft_putchar(str[i], len);
 		i++;
 	}
     va_end(args);
@@ -64,18 +62,18 @@ int ft_printf(const char *str, ...)
 }
 
 
-/* int main()
+int main()
 {
 	// char	lettre = 'a';
 	// char	str[] = "and if you don't know now you know";
 	// ft_printf("it was all %c dream\n%s \n", lettre, str);
 	int	ft_len;
 	int len;
-	ft_len = ft_printf("\nft_printf = %c\n", '0');
-	len = printf("\nft_printf = %c\n", '0');
+	ft_len = ft_printf("%x\n", -1);
+	// printf("\n");
+	len = printf("%x\n", -1);
 
-	printf("\nft_printf = %i\n", ft_len);
-	printf("\nprintf = %i\n", len);
+	printf("\nft_printf = %i", ft_len);
+	printf("\nprintf = %i", len);
     return 0;
 }
- */

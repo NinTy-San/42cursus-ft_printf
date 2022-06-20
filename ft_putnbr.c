@@ -12,25 +12,23 @@
 
 #include "ft_printf.h"
 
-int	ft_putnbr(int nbr)
+int	ft_putnbr(int nbr, int len)
 {
 	char	*base;
 	long	nb;
-	int		len;
 
 	base = "0123456789";
 	nb = nbr;
-	len = 0;
 	if (nb < 0)
 	{
-		len += ft_putchar('-');
+		len += ft_putchar('-', len);
 		nb *= -1;
 	}
 	while (nb >= 10)
 	{
-		ft_putnbr(nb / 10);
+		ft_putnbr(nb / 10, len);
 		nb %= 10;
 	}
-	len += ft_putchar(base[nb]);
+	len += ft_putchar(base[nb], len);
 	return (len);
 }
