@@ -1,15 +1,12 @@
 #include "ft_printf.h"
 
-int	ft_putnbr_hexa(unsigned int nbr, char *base, int size, int len)
+int	ft_putnbr_hexa(unsigned long nb, char *base, int len)
 {
-	long	nb;
-	nb = nbr;
+	int		l;
 
-	while (nb >= size)
-	{
-		ft_putnbr_hexa(nb / size, base, size, len);
-		nb %= size;
-	}
-	len += ft_putchar(base[nb], len);
-	return (len);
+	l = len;
+	if (nb >= 16)
+		l += ft_putnbr_hexa(nb / 16, base, len);
+	l += ft_putchar(base[nb % 16]);
+	return (l);
 }

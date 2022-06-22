@@ -19,9 +19,9 @@ int ft_putunbr(unsigned int nbr, int len)
 	base = "0123456789";
 	while (nbr >= 10)
 	{
-		ft_putunbr(nbr / 10, len);
+		len += ft_putunbr(nbr / 10, len);
 		nbr %= 10;
 	}
-	len += ft_putchar(base[nbr], len);
+	len += ft_putchar(base[nbr]);
 	return (len);
 }

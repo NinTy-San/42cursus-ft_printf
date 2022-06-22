@@ -21,14 +21,14 @@ int	ft_putnbr(int nbr, int len)
 	nb = nbr;
 	if (nb < 0)
 	{
-		len += ft_putchar('-', len);
+		len += ft_putchar('-');
 		nb *= -1;
 	}
 	while (nb >= 10)
 	{
-		ft_putnbr(nb / 10, len);
+		len += ft_putnbr(nb / 10, len);
 		nb %= 10;
 	}
-	len += ft_putchar(base[nb], len);
+	len += ft_putchar(base[nb]);
 	return (len);
 }

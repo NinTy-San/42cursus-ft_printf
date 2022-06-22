@@ -17,6 +17,6 @@ int	ft_putstr(char *str, int len)
 	int		i;
 	i = 0;
 	while (str[i])
-		len += ft_putchar(str[i++], len);
+		len += ft_putchar(str[i++]);
 	return (len);
 }
