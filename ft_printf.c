@@ -51,11 +51,14 @@ int ft_printf(const char *str, ...)
 	{
 		if (str[i] == '%')
 		{
-			i++;
-			len = format_case(str[i++], args, len);
+			i += 2;
+			len += format_case(str[i - 1], args, 0);
 		}
-		len += ft_putchar(str[i], len);
-		i++;
+		if (str[i])
+		{
+			len += ft_putchar(str[i], 0);
+			i++;
+		}
 	}
     va_end(args);
     return (len);
@@ -69,9 +72,9 @@ int main()
 	// ft_printf("it was all %c dream\n%s \n", lettre, str);
 	int	ft_len;
 	int len;
-	ft_len = ft_printf("%x\n", -1);
-	// printf("\n");
-	len = printf("%x\n", -1);
+	ft_len = ft_printf("test1 = %s", "it was all a dream");
+	printf("\n");
+	len = printf("test2 = %s", "it was all a dream");
 
 	printf("\nft_printf = %i", ft_len);
 	printf("\nprintf = %i", len);
