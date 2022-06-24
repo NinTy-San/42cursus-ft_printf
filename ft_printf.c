@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adohou <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: adohou <adohou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 20:03:57 by adohou            #+#    #+#             */
-/*   Updated: 2022/06/13 20:04:08 by adohou           ###   ########.fr       */
+/*   Updated: 2022/06/24 18:05:32 by adohou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,21 +49,17 @@ int ft_printf(const char *str, ...)
 	len = 0;
 	while (str[i])
 	{
+		while (str[i] && str[i] != '%')
+			len += ft_putchar(str[i++]);
 		if (str[i] == '%')
 		{
+			len += format_case(str[i + 1], args, 0);
 			i += 2;
-			len += format_case(str[i - 1], args, 0);
-		}
-		if (str[i] && str[i] != '%')
-		{
-			len += ft_putchar(str[i]);
-			i++;
 		}
 	}
-    va_end(args);
-    return (len);
+	va_end(args);
+	return (len);
 }
-
 
 /* int main()
 {
@@ -72,12 +68,13 @@ int ft_printf(const char *str, ...)
 	// ft_printf("it was all %c dream\n%s \n", lettre, str);
 	int	ft_len;
 	int len;
-	ft_len = ft_printf("test1 = %X", -1314);
+	ft_len = ft_printf("%x", INT_MIN);
 	printf("\n");
-	len = printf("test2 = %X", -1314);
+	len = printf("%x", INT_MIN);
 
-	printf("\nft_printf = %i", ft_len);
-	printf("\nprintf = %i", len);
+	printf("\nlen ft_printf = %i", ft_len);
+	printf("\nlen printf = %i", len);
 	printf("\n");
     return 0;
-} */
+}
+ */

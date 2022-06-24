@@ -24,11 +24,8 @@ int	ft_putnbr(int nbr, int len)
 		len += ft_putchar('-');
 		nb *= -1;
 	}
-	while (nb >= 10)
-	{
-		len += ft_putnbr(nb / 10, len);
-		nb %= 10;
-	}
-	len += ft_putchar(base[nb]);
+	if (nb >= 10)
+		len = ft_putnbr(nb / 10, len);
+	len += ft_putchar(base[nb % 10]);
 	return (len);
 }
