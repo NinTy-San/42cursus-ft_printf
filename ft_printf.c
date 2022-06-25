@@ -6,7 +6,7 @@
 /*   By: adohou <adohou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 20:03:57 by adohou            #+#    #+#             */
-/*   Updated: 2022/06/24 18:05:32 by adohou           ###   ########.fr       */
+/*   Updated: 2022/06/25 19:26:33 by adohou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	format_case(char flag, va_list arg, int len)
 {
 	int		l;
+
 	l = len;
 	if (flag == 'c')
 		l = ft_putchar(va_arg(arg, int));
@@ -23,7 +24,7 @@ int	format_case(char flag, va_list arg, int len)
 	if (flag == 'p')
 		l = ft_putptr_hexa(va_arg(arg, char *), len);
 	if (flag == 'd')
-		l = ft_putnbr(va_arg(arg, int), len);
+		l += ft_putnbr(va_arg(arg, int), len);
 	if (flag == 'i')
 		l = ft_putnbr(va_arg(arg, int), len);
 	if (flag == 'u')
@@ -37,14 +38,13 @@ int	format_case(char flag, va_list arg, int len)
 	return (l);
 }
 
-int ft_printf(const char *str, ...)
+int	ft_printf(const char *str, ...)
 {
 	int		i;
 	int		len;
+	va_list	args;
 
-    va_list args;
-
-    va_start(args, str);
+	va_start(args, str);
 	i = 0;
 	len = 0;
 	while (str[i])
@@ -68,13 +68,12 @@ int ft_printf(const char *str, ...)
 	// ft_printf("it was all %c dream\n%s \n", lettre, str);
 	int	ft_len;
 	int len;
-	ft_len = ft_printf("%x", INT_MIN);
+	ft_len = ft_printf("%i", INT_MIN);
 	printf("\n");
-	len = printf("%x", INT_MIN);
+	len = printf("%i", INT_MIN);
 
 	printf("\nlen ft_printf = %i", ft_len);
 	printf("\nlen printf = %i", len);
 	printf("\n");
     return 0;
-}
- */
+} */

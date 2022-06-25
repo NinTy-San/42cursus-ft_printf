@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putunbr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adohou <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: adohou <adohou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 17:49:50 by adohou            #+#    #+#             */
-/*   Updated: 2022/06/17 17:49:53 by adohou           ###   ########.fr       */
+/*   Updated: 2022/06/25 19:41:40 by adohou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_putunbr(unsigned int nbr, int len)
+int	ft_putunbr(unsigned int nbr, int len)
 {
 	char	*base;
 
