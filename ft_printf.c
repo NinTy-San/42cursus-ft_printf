@@ -6,7 +6,7 @@
 /*   By: adohou <adohou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 20:03:57 by adohou            #+#    #+#             */
-/*   Updated: 2022/06/27 15:33:23 by adohou           ###   ########.fr       */
+/*   Updated: 2022/06/27 22:44:14 by adohou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,20 +60,3 @@ int	ft_printf(const char *str, ...)
 	va_end(args);
 	return (len);
 }
-
-/* int main()
-{
-
-	char	str[] = "it was all a dream";
-	int		ft_len;
-	int		len;
-
-	printf("ft_printf ->\n");
-	ft_len = ft_printf("c = %c\ns = %s\np = %p\nd= %d\ni = %i\nu = %u\nx = %x\nX = %X\n%% = %%\n", 'A', str, str, INT_MIN, INT_MAX, INT_MAX, -1993, -1993);
-	printf("printf ->\n");
-	len = printf("c = %c\ns = %s\np = %p\nd= %d\ni = %i\nu = %u\nx = %x\nX = %X\n%% = %%\n", 'A', str, str, INT_MIN, INT_MAX, INT_MAX, -1993, -1993);
-
-	printf("len ft_printf = %i\n", ft_len);
-	printf("len printf = %i\n", len);
-    return 0;
-} */
