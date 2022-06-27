@@ -6,7 +6,7 @@
 /*   By: adohou <adohou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 20:03:57 by adohou            #+#    #+#             */
-/*   Updated: 2022/06/25 19:26:33 by adohou           ###   ########.fr       */
+/*   Updated: 2022/06/27 15:33:23 by adohou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	format_case(char flag, va_list arg, int len)
 	if (flag == 'X')
 		l = ft_putnbr_hexa(va_arg(arg, unsigned int), "0123456789ABCDEF", len);
 	if (flag == '%')
-		l = ft_putchar(flag);
+		l = ft_putchar('%');
 	return (l);
 }
 
@@ -63,17 +63,17 @@ int	ft_printf(const char *str, ...)
 
 /* int main()
 {
-	// char	lettre = 'a';
-	// char	str[] = "and if you don't know now you know";
-	// ft_printf("it was all %c dream\n%s \n", lettre, str);
-	int	ft_len;
-	int len;
-	ft_len = ft_printf("%i", INT_MIN);
-	printf("\n");
-	len = printf("%i", INT_MIN);
 
-	printf("\nlen ft_printf = %i", ft_len);
-	printf("\nlen printf = %i", len);
-	printf("\n");
+	char	str[] = "it was all a dream";
+	int		ft_len;
+	int		len;
+
+	printf("ft_printf ->\n");
+	ft_len = ft_printf("c = %c\ns = %s\np = %p\nd= %d\ni = %i\nu = %u\nx = %x\nX = %X\n%% = %%\n", 'A', str, str, INT_MIN, INT_MAX, INT_MAX, -1993, -1993);
+	printf("printf ->\n");
+	len = printf("c = %c\ns = %s\np = %p\nd= %d\ni = %i\nu = %u\nx = %x\nX = %X\n%% = %%\n", 'A', str, str, INT_MIN, INT_MAX, INT_MAX, -1993, -1993);
+
+	printf("len ft_printf = %i\n", ft_len);
+	printf("len printf = %i\n", len);
     return 0;
 } */
